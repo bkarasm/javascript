@@ -1,19 +1,23 @@
-var pkara = { firstname: "Piotr"
-               , surname: "Karasiak"
-               , birthdate: new Date(1985, 9, 4)
-               , details: printDetails
-               };
-var rmusi = { firstname: "Radoslaw"
-            , surname : "Musial"
-            , birthdate: new Date(1976, 2, 1)
-            , details: printDetails
-            };
+var employees =
+[
+  { firstname: "Jan"
+  , surname: "Kowalski"
+  , birthdate: new Date(1985, 2, 14)
+  , details: printDetails
+  },
 
-var areli = { firstname: "Andrzej"
-            , surname: "Religa"
-            , birthdate: new Date(1977, 0, 1)
-            , details: printDetails
-            };
+  { firstname: "Stefan"
+  , surname: "Burczymucha"
+  , birthdate: new Date(1962, 5, 7)
+  , details: printDetails
+  },
+
+  { firstname: "Mieszko"
+  , surname : "Pierwszy"
+  , birthdate: new Date(940, 2, 1)
+  , details: printDetails
+  }
+];
 
 function printDetails()
 {
@@ -27,19 +31,13 @@ function printDetails()
   return details;
 }
 
-var pkaraElem = document.createElement("li");
-var rmusiElem = document.createElement("li");
-var areliElem = document.createElement("li");
-
-var pkaraText = document.createTextNode(pkara.details());
-var rmusiText = document.createTextNode(rmusi.details());
-var areliText = document.createTextNode(areli.details());
-
-pkaraElem.appendChild(pkaraText);
-rmusiElem.appendChild(rmusiText);
-areliElem.appendChild(areliText);
-
 var employeeList = document.getElementById("employeeList");
-employeeList.appendChild(pkaraElem);
-employeeList.appendChild(rmusiElem);
-employeeList.appendChild(areliElem);
+
+for (i = 0; i < employees.length; ++i)
+{
+  var listElem = document.createElement("li");
+  var elemText = document.createTextNode(employees[i].details());
+
+  listElem.appendChild(elemText);
+  employeeList.appendChild(listElem);
+}
